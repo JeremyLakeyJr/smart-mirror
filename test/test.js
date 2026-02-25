@@ -68,6 +68,15 @@ console.log("\nserver module");
 test("server exports an express app with expected routes", () => {
   const app = require("../server");
   assert.ok(typeof app === "function", "app should be a function (express app)");
+  const routes = app._router.stack
+    .filter((layer) => layer.route)
+    .flatMap((layer) =>
+      Object.keys(layer.route.methods).map(
+        (method) => `${method.toUpperCase()} ${layer.route.path}`
+      )
+    );
+  assert.ok(routes.includes("POST /api/tony/chat"));
+  assert.ok(routes.includes("GET /api/heartbeat"));
 });
 
 console.log(`\nResults: ${passed} passed, ${failed} failed`);

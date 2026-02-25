@@ -17,14 +17,31 @@
     <!-- Center: greeting + camera feed -->
     <main>
       <h1 id="greeting"></h1>
+      <div id="tony-response">Tony says: Ready.</div>
       <div id="camera-container">
         <video id="camera" autoplay muted playsinline></video>
       </div>
+      <section id="widgets">
+        <div class="widget" id="calendar-widget">
+          <h2>Calendar</h2>
+          <ul id="calendar-list"></ul>
+        </div>
+        <div class="widget" id="weather-widget">
+          <h2>Weather</h2>
+          <div id="weather-text"></div>
+        </div>
+        <div class="widget" id="news-widget">
+          <h2>News</h2>
+          <ul id="news-list"></ul>
+        </div>
+      </section>
     </main>
 
     <!-- Bottom bar: TTS controls -->
     <footer>
       <input id="tts-input" type="text" placeholder="Type something to speak…" />
+      <button id="tony-send">Ask Tony</button>
+      <button id="voice-listen">Listen</button>
       <button id="tts-speak">Speak</button>
       <button id="tts-stop">Stop</button>
     </footer>
