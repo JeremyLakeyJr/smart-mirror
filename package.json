@@ -1,0 +1,22 @@
+{
+  "name": "smart-mirror",
+  "version": "1.0.0",
+  "description": "Smart mirror project for Tony AI with voice (TTS) and camera integration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "smart-mirror",
+    "tts",
+    "camera",
+    "nodejs"
+  ],
+  "author": "Tony Al",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "say": "^0.16.0"
+  }
+}
