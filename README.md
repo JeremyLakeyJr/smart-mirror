@@ -1,10 +1,11 @@
 # Smart Mirror – Tony AI
 
-A Node.js smart mirror application with **voice (TTS + speech recognition)**, **camera**, and **Tony AI** integration, built for Tony Al.
+A Node.js smart mirror application with **voice (TTS + speech recognition)**, **camera**, **face recognition**, and **Tony AI** integration, built for Tony Al.
 
 ## Features
 
 - **Live camera feed** – streams the device camera directly onto the mirror display via the browser MediaDevices API.
+- **Face recognition** – detects and recognizes faces using face-api.js (train on your face for personalized greetings).
 - **Text-to-Speech (TTS)** – type any message and have the mirror speak it aloud using the system speech engine (powered by the `say` npm package).
 - **Voice input** – Web Speech API voice capture for hands-free commands (for example: “What’s the weather?”).
 - **Tony AI chat route** – backend route forwards text/voice commands to OpenClaw and returns Tony responses.
@@ -39,6 +40,13 @@ npm start
 
 Open **http://localhost:3000** in a Chromium-based browser (camera access requires a secure context or localhost).
 
+## Face Recognition Setup
+
+1. Allow camera access in the browser.
+2. Click "Train Face" and capture 5-10 photos of your face from different angles.
+3. The system saves your face embeddings locally.
+4. On detection, it greets you personally if matched.
+
 ## Project Structure
 
 ```
@@ -47,11 +55,12 @@ smart-mirror/
 ├── src/
 │   ├── tts.js           # Text-to-speech module (say)
 │   ├── camera.js        # Camera constraints helper
-│   └── display.js       # Display widget helpers (greeting, date, time)
+│   ├── display.js       # Display widget helpers (greeting, date, time)
+│   └── tony.js          # OpenClaw integration
 ├── public/
 │   ├── index.html       # Mirror UI
 │   ├── css/style.css    # Dark theme styles
-│   └── js/app.js        # Client-side camera, TTS & display logic
+│   └── js/app.js        # Client-side camera, TTS, face rec & display logic
 ├── test/
 │   └── test.js          # Basic module tests
 ├── package.json
@@ -87,6 +96,7 @@ If `OPENCLOW_API_KEY` is missing, Tony chat requests return an error response.
 
 - **[express](https://expressjs.com/)** – lightweight web server
 - **[say](https://github.com/Marak/say.js)** – cross-platform text-to-speech
+- **[face-api.js](https://github.com/justadudewhohacks/face-api.js)** – face detection and recognition
 
 ## Running Tests
 
